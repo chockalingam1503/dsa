@@ -37,15 +37,33 @@ public class ArrayRot {
         return a;
     }
 
+    public static List<Integer> circularArrayRotationWithoutExtraSpace(List<Integer> a, int k, List<Integer> queries) {
+
+
+        int arrSize = a.size();
+
+
+        k = k% arrSize;
+
+      List<Integer> lst = new ArrayList<>(queries.size());
+
+        for(int newIndex : queries){
+            int requiredIndex= (newIndex-k + arrSize) % arrSize;
+            lst.add(a.get(requiredIndex));
+        }
+
+        return lst;
+    }
+
     public static void main(String[] args) {
 
         List<Integer> array = Arrays.asList(1, 2, 3, 4, 5);
 
-        int k = 2;
+        int k = 3;
 
         List<Integer> queries = Arrays.asList(0, 1, 2, 3, 4);
 
-        List<Integer> result = circularArrayRotation(array, k, queries);
+        List<Integer> result = circularArrayRotationWithoutExtraSpace(array, k, queries);
 
         System.out.println("Rotated Array Elements:");
         System.out.println(result);
